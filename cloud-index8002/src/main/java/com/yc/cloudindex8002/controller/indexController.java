@@ -9,4 +9,6 @@ public class indexController {
     public String index(){
         return "404";
     }
+    @RequestMapping(path={"login.html","login"})
+    public String login() { return "login"; }
 }
