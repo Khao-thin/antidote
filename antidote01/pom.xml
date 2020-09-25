@@ -12,6 +12,12 @@
     <artifactId>antidote01</artifactId>
 
     <dependencies>
+        <!-- 引入 common 工程 -->
+        <dependency>
+            <groupId>com.yc</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!-- springboot测试依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
