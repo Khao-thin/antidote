@@ -470,14 +470,14 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="account_form">
                         <h2>登录</h2>
-                        <form action="#">
+                        <form action="login" method="post">
                             <p>   
                                 <label>用户名或电子邮件 <span>*</span></label>
-                                <input type="text">
+                                <input type="text" name="username">
                              </p>
                              <p>   
                                 <label>密码 <span>*</span></label>
-                                <input type="password">
+                                <input type="password" name="password">
                              </p>   
                             <div class="login_submit">
                                <a href="#">忘记密码?</a>
@@ -498,14 +498,14 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="account_form register">
                         <h2>注册</h2>
-                        <form action="#">
+                        <form action="register" method="post">
                             <p>   
                                 <label>电子邮箱  <span>*</span></label>
-                                <input type="text">
+                                <input type="text" name="email">
                              </p>
                              <p>   
                                 <label>密码 <span>*</span></label>
-                                <input type="password">
+                                <input type="password" name="emailword">
                              </p>
                             <div class="login_submit">
                                 <button type="submit">注册</button>
