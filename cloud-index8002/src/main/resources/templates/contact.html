@@ -476,7 +476,17 @@
 	   var point = new BMap.Point(112.69125,26.888519);  // 创建点坐标
 	   map.centerAndZoom(point, 16);
 	   //map.centerAndZoom("北京", 15);
-	   //map.centerAndZoom("Hongkong", 15);     
+	   //map.centerAndZoom("Hongkong", 15);   
+	   map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
+	   var icon = new BMap.Icon('assets/img/1.png', new BMap.Size(29, 38), {//是引用图标的名字以及大小，注意大小要一样
+		    anchor: new BMap.Size(1, 1)//这句表示图片相对于所加的点的位置
+		});
+
+		var mkr = new BMap.Marker(new BMap.Point(112.69125,26.888519), {
+		    icon: icon
+		});
+
+		map.addOverlay(mkr);
     
     
     
