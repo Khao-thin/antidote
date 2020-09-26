@@ -32,7 +32,7 @@
 			targetPackage="com.yc.cloudcommon.dao" targetProject="src/main/java">
 		</javaClientGenerator>
 
-<!-- 反向生成的表的配置   -->
+		<!-- 反向生成的表的配置   -->
 		<table tableName="%" >
 		<!-- 自定义的列映射或组件配置 -->
 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/>
