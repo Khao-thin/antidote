@@ -24,12 +24,12 @@
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<!-- XML文件包名 -->
-		<sqlMapGenerator targetPackage="com.yc.cloudcommon.dao"
+		<sqlMapGenerator targetPackage="com.yc.cloudcommon.com.yc.cloudproduct8001.dao"
 			targetProject="src/main/resources">
 		</sqlMapGenerator>
 		<!-- dao类包名 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.yc.cloudcommon.dao" targetProject="src/main/java">
+			targetPackage="com.yc.cloudcommon.com.yc.cloudproduct8001.dao" targetProject="src/main/java">
 		</javaClientGenerator>
 
 		<!-- 反向生成的表的配置   -->

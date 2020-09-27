@@ -32,6 +32,18 @@ public class indexController {
     @RequestMapping(path={"shop.html","shop"})
     public String shop() { return "shop"; }
 
+    @RequestMapping(path={"index.html","index"})
+    public String index() { return "index"; }
+
+    @RequestMapping(path={"blog.html","blog"})
+    public String blog() { return "blog"; }
+
+    @RequestMapping(path={"contact.html","contact"})
+    public String contact() { return "contact"; }
+
+    @RequestMapping(path={"about.html","about"})
+    public String about() { return "about"; }
+
 
 
 }
