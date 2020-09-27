@@ -1,16 +1,21 @@
 package com.yc.cloudcommon.bean;
 
-public class AnUser {
-    private Integer id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
+public class AnUser implements Serializable {
+    private Integer id;
+    @NotEmpty(message="账号不能为空")
     private String account;
 
     private String name;
-
+    @NotEmpty(message="密码不能为空")
     private String pwd;
 
     private String sex;
-
+    @Email(message="输入正确的邮箱地址")
+    @NotEmpty(message = "邮箱不能为空")
     private String email;
 
     private String head;

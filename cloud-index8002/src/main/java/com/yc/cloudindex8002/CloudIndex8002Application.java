@@ -1,11 +1,16 @@
 package com.yc.cloudindex8002;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
+@EnableEurekaClient
+// 服务降级注解
+@EnableCircuitBreaker
 @SpringBootApplication
-@MapperScan("com.yc.cloudindex8002.mapper")
+@EnableFeignClients
 public class CloudIndex8002Application {
 
     public static void main(String[] args) {
