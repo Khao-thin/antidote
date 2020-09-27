@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.cloudcommon.dao.AnSizeMapper">
-  <resultMap id="BaseResultMap" type="com.yc.cloudcommon.bean.AnSize">
+<mapper namespace="com.yc.cloudcommon.dao.AnEvaMapper">
+  <resultMap id="BaseResultMap" type="com.yc.cloudcommon.bean.AnEva">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="oitid" jdbcType="INTEGER" property="oitid" />
+    <result column="star" jdbcType="VARCHAR" property="star" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, size
+    id, uid, oitid, star, content, createtime
   </sql>
-  <select id="selectByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yc.cloudcommon.bean.AnEvaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from an_size
+    from an_eva
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +87,94 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from an_size
+    from an_eva
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from an_size
+    delete from an_eva
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample">
-    delete from an_size
+  <delete id="deleteByExample" parameterType="com.yc.cloudcommon.bean.AnEvaExample">
+    delete from an_eva
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yc.cloudcommon.bean.AnSize">
+  <insert id="insert" parameterType="com.yc.cloudcommon.bean.AnEva">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into an_size (size)
-    values (#{size,jdbcType=VARCHAR})
+    insert into an_eva (uid, oitid, star, 
+      content, createtime)
+    values (#{uid,jdbcType=INTEGER}, #{oitid,jdbcType=INTEGER}, #{star,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.cloudcommon.bean.AnSize">
+  <insert id="insertSelective" parameterType="com.yc.cloudcommon.bean.AnEva">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into an_size
+    insert into an_eva
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="size != null">
-        size,
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="oitid != null">
+        oitid,
+      </if>
+      <if test="star != null">
+        star,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createtime != null">
+        createtime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="size != null">
-        #{size,jdbcType=VARCHAR},
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="oitid != null">
+        #{oitid,jdbcType=INTEGER},
+      </if>
+      <if test="star != null">
+        #{star,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample" resultType="java.lang.Long">
-    select count(*) from an_size
+  <select id="countByExample" parameterType="com.yc.cloudcommon.bean.AnEvaExample" resultType="java.lang.Long">
+    select count(*) from an_eva
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update an_size
+    update an_eva
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.size != null">
-        size = #{record.size,jdbcType=VARCHAR},
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.oitid != null">
+        oitid = #{record.oitid,jdbcType=INTEGER},
+      </if>
+      <if test="record.star != null">
+        star = #{record.star,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -140,30 +182,54 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update an_size
+    update an_eva
     set id = #{record.id,jdbcType=INTEGER},
-      size = #{record.size,jdbcType=VARCHAR}
+      uid = #{record.uid,jdbcType=INTEGER},
+      oitid = #{record.oitid,jdbcType=INTEGER},
+      star = #{record.star,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.cloudcommon.bean.AnSize">
-    update an_size
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.cloudcommon.bean.AnEva">
+    update an_eva
     <set>
-      <if test="size != null">
-        size = #{size,jdbcType=VARCHAR},
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="oitid != null">
+        oitid = #{oitid,jdbcType=INTEGER},
+      </if>
+      <if test="star != null">
+        star = #{star,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.cloudcommon.bean.AnSize">
-    update an_size
-    set size = #{size,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yc.cloudcommon.bean.AnEva">
+    update an_eva
+    set uid = #{uid,jdbcType=INTEGER},
+      oitid = #{oitid,jdbcType=INTEGER},
+      star = #{star,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yc.cloudcommon.bean.AnSize">
+  <resultMap id="BaseResultMap" type="com.yc.cloudcommon.bean.AnEva">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="oitid" jdbcType="INTEGER" property="oitid" />
+    <result column="star" jdbcType="VARCHAR" property="star" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -224,15 +290,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, size
+    id, uid, oitid, star, content, createtime
   </sql>
-  <select id="selectByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yc.cloudcommon.bean.AnEvaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from an_size
+    from an_eva
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -243,56 +309,94 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from an_size
+    from an_eva
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from an_size
+    delete from an_eva
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample">
-    delete from an_size
+  <delete id="deleteByExample" parameterType="com.yc.cloudcommon.bean.AnEvaExample">
+    delete from an_eva
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yc.cloudcommon.bean.AnSize">
+  <insert id="insert" parameterType="com.yc.cloudcommon.bean.AnEva">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into an_size (size)
-    values (#{size,jdbcType=VARCHAR})
+    insert into an_eva (uid, oitid, star, 
+      content, createtime)
+    values (#{uid,jdbcType=INTEGER}, #{oitid,jdbcType=INTEGER}, #{star,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.cloudcommon.bean.AnSize">
+  <insert id="insertSelective" parameterType="com.yc.cloudcommon.bean.AnEva">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into an_size
+    insert into an_eva
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="size != null">
-        size,
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="oitid != null">
+        oitid,
+      </if>
+      <if test="star != null">
+        star,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createtime != null">
+        createtime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="size != null">
-        #{size,jdbcType=VARCHAR},
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="oitid != null">
+        #{oitid,jdbcType=INTEGER},
+      </if>
+      <if test="star != null">
+        #{star,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample" resultType="java.lang.Long">
-    select count(*) from an_size
+  <select id="countByExample" parameterType="com.yc.cloudcommon.bean.AnEvaExample" resultType="java.lang.Long">
+    select count(*) from an_eva
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update an_size
+    update an_eva
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.size != null">
-        size = #{record.size,jdbcType=VARCHAR},
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.oitid != null">
+        oitid = #{record.oitid,jdbcType=INTEGER},
+      </if>
+      <if test="record.star != null">
+        star = #{record.star,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -300,185 +404,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update an_size
+    update an_eva
     set id = #{record.id,jdbcType=INTEGER},
-      size = #{record.size,jdbcType=VARCHAR}
+      uid = #{record.uid,jdbcType=INTEGER},
+      oitid = #{record.oitid,jdbcType=INTEGER},
+      star = #{record.star,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.cloudcommon.bean.AnSize">
-    update an_size
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.cloudcommon.bean.AnEva">
+    update an_eva
     <set>
-      <if test="size != null">
-        size = #{size,jdbcType=VARCHAR},
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="oitid != null">
+        oitid = #{oitid,jdbcType=INTEGER},
+      </if>
+      <if test="star != null">
+        star = #{star,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.cloudcommon.bean.AnSize">
-    update an_size
-    set size = #{size,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.yc.cloudcommon.bean.AnSize">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="size" jdbcType="VARCHAR" property="size" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    id, size
-  </sql>
-  <select id="selectByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from an_size
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from an_size
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from an_size
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample">
-    delete from an_size
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.yc.cloudcommon.bean.AnSize">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into an_size (size)
-    values (#{size,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.yc.cloudcommon.bean.AnSize">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into an_size
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="size != null">
-        size,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="size != null">
-        #{size,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.yc.cloudcommon.bean.AnSizeExample" resultType="java.lang.Long">
-    select count(*) from an_size
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update an_size
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.size != null">
-        size = #{record.size,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update an_size
-    set id = #{record.id,jdbcType=INTEGER},
-      size = #{record.size,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.cloudcommon.bean.AnSize">
-    update an_size
-    <set>
-      <if test="size != null">
-        size = #{size,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.cloudcommon.bean.AnSize">
-    update an_size
-    set size = #{size,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yc.cloudcommon.bean.AnEva">
+    update an_eva
+    set uid = #{uid,jdbcType=INTEGER},
+      oitid = #{oitid,jdbcType=INTEGER},
+      star = #{star,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
