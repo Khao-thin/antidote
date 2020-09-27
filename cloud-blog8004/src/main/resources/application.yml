@@ -1,0 +1,11 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: anblog
+  datasource:
+    url: jdbc:mysql://112.74.84.42/S3-Antidote?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
+    username: root
+    password: Xkh0716!
+    driver-class-name: com.mysql.jdbc.Driver
