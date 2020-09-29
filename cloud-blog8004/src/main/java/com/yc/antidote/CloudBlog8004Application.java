@@ -1,4 +1,4 @@
-package com.yc.cloudblog8004;
+package com.yc.antidote;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 //服务降级注解
 @EnableCircuitBreaker
 @SpringBootApplication
-@MapperScan("com.yc.cloudindex8002.dao")
+@MapperScan("com.yc.cloudblog8004.dao")
 @EnableFeignClients
 public class CloudBlog8004Application {
 

@@ -5,7 +5,10 @@ spring:
   application:
     name: anblog
   datasource:
-    url: jdbc:mysql://112.74.84.42/S3-Antidote?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1/antidote?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
     username: root
-    password: Xkh0716!
+    password: a
     driver-class-name: com.mysql.jdbc.Driver
+logging:
+  level:
+    com.yc.cloudblog8004.dao: debug
