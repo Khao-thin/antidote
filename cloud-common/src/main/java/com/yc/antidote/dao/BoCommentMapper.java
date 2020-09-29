@@ -1,8 +1,9 @@
 package com.yc.antidote.dao;
 
-import org.apache.ibatis.annotations.Param;
-
+import com.yc.antidote.bean.BoComment;
+import com.yc.antidote.bean.BoCommentExample;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface BoCommentMapper {
     long countByExample(BoCommentExample example);

@@ -1,8 +1,6 @@
 package com.yc.antidote;
 
 import com.yc.antidote.dao.BoArticleMapper;
-import com.yc.cloudcommon.bean.BoArticle;
-import com.yc.cloudcommon.bean.BoArticleExample;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

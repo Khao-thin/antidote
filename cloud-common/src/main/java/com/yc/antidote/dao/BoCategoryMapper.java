@@ -1,8 +1,9 @@
 package com.yc.antidote.dao;
 
-import org.apache.ibatis.annotations.Param;
-
+import com.yc.antidote.bean.BoCategory;
+import com.yc.antidote.bean.BoCategoryExample;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface BoCategoryMapper {
     long countByExample(BoCategoryExample example);

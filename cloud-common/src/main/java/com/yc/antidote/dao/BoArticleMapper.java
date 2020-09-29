@@ -2,9 +2,8 @@ package com.yc.antidote.dao;
 
 import com.yc.antidote.bean.BoArticle;
 import com.yc.antidote.bean.BoArticleExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface BoArticleMapper {
     long countByExample(BoArticleExample example);

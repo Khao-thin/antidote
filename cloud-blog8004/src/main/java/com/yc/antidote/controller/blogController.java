@@ -2,8 +2,6 @@ package com.yc.antidote.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.yc.antidote.dao.BoArticleMapper;
-import com.yc.cloudcommon.bean.BoArticle;
-import com.yc.cloudcommon.bean.BoArticleExample;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
