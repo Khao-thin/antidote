@@ -1,5 +1,7 @@
-package com.yc.antidote.web;
+package com.yc.antidote.controller;
 
+import com.yc.antidote.bean.AnUser;
+import com.yc.antidote.bean.AnUserExample;
 import com.yc.antidote.bean.Result;
 import com.yc.antidote.dao.AnUserMapper;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("user")
-public class UserAction {
+public class UserController {
     @Resource
     AnUserMapper anUserMapper;
 

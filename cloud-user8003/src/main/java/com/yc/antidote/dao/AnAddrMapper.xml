@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.cloudcommon.com.yc.antidote.dao.AnAddrMapper">
-  <resultMap id="BaseResultMap" type="com.yc.cloudcommon.bean.AnAddr">
+<mapper namespace="com.yc.antidote.dao.AnAddrMapper">
+  <resultMap id="BaseResultMap" type="com.yc.antidote.bean.AnAddr">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -73,7 +73,7 @@
   <sql id="Base_Column_List">
     id, uid, name, addr, phone, dft, sheng, shi, xian
   </sql>
-  <select id="selectByExample" parameterType="com.yc.cloudcommon.bean.AnAddrExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yc.antidote.bean.AnAddrExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +97,13 @@
     delete from an_addr
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yc.cloudcommon.bean.AnAddrExample">
+  <delete id="deleteByExample" parameterType="com.yc.antidote.bean.AnAddrExample">
     delete from an_addr
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yc.cloudcommon.bean.AnAddr">
+  <insert id="insert" parameterType="com.yc.antidote.bean.AnAddr">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -114,7 +114,7 @@
       #{phone,jdbcType=VARCHAR}, #{dft,jdbcType=INTEGER}, #{sheng,jdbcType=INTEGER}, 
       #{shi,jdbcType=INTEGER}, #{xian,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.cloudcommon.bean.AnAddr">
+  <insert id="insertSelective" parameterType="com.yc.antidote.bean.AnAddr">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -172,7 +172,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yc.cloudcommon.bean.AnAddrExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.yc.antidote.bean.AnAddrExample" resultType="java.lang.Long">
     select count(*) from an_addr
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -228,7 +228,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.cloudcommon.bean.AnAddr">
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.antidote.bean.AnAddr">
     update an_addr
     <set>
       <if test="uid != null">
@@ -258,7 +258,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.cloudcommon.bean.AnAddr">
+  <update id="updateByPrimaryKey" parameterType="com.yc.antidote.bean.AnAddr">
     update an_addr
     set uid = #{uid,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},

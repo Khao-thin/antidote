@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.cloudcommon.com.yc.antidote.dao.AnUserMapper">
-  <resultMap id="BaseResultMap" type="com.yc.cloudcommon.bean.AnUser">
+<mapper namespace="com.yc.antidote.dao.AnUserMapper">
+  <resultMap id="BaseResultMap" type="com.yc.antidote.bean.AnUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="account" jdbcType="VARCHAR" property="account" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List">
     id, account, name, pwd, sex, email, head
   </sql>
-  <select id="selectByExample" parameterType="com.yc.cloudcommon.bean.AnUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yc.antidote.bean.AnUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -95,13 +95,13 @@
     delete from an_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yc.cloudcommon.bean.AnUserExample">
+  <delete id="deleteByExample" parameterType="com.yc.antidote.bean.AnUserExample">
     delete from an_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yc.cloudcommon.bean.AnUser">
+  <insert id="insert" parameterType="com.yc.antidote.bean.AnUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -110,7 +110,7 @@
     values (#{account,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{head,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.cloudcommon.bean.AnUser">
+  <insert id="insertSelective" parameterType="com.yc.antidote.bean.AnUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -156,7 +156,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yc.cloudcommon.bean.AnUserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.yc.antidote.bean.AnUserExample" resultType="java.lang.Long">
     select count(*) from an_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -204,7 +204,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.cloudcommon.bean.AnUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.antidote.bean.AnUser">
     update an_user
     <set>
       <if test="account != null">
@@ -228,7 +228,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.cloudcommon.bean.AnUser">
+  <update id="updateByPrimaryKey" parameterType="com.yc.antidote.bean.AnUser">
     update an_user
     set account = #{account,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},

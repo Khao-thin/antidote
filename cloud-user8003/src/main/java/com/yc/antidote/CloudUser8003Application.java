@@ -10,7 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 // 服务降级注解
 @EnableCircuitBreaker
 @SpringBootApplication
-@MapperScan("com.yc.clouduser8003.dao")
+@MapperScan("com.yc.antidote.dao")
 public class CloudUser8003Application {
 
     public static void main(String[] args) {
