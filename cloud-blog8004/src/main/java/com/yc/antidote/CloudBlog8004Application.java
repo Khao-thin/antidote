@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 //服务降级注解
 @EnableCircuitBreaker
 @SpringBootApplication
-@MapperScan("com.yc.cloudblog8004.dao")
+@MapperScan("com.yc.antidote.dao")
 @EnableFeignClients
 public class CloudBlog8004Application {
 

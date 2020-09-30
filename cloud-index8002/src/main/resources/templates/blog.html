@@ -85,40 +85,24 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12">
                     <div class="blog_wrapper">
-                        <article class="single_blog">
+                        <article class="single_blog" th:each=" a : ${Articles.list}">
                             <figure>
                                 <div class="blog_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blogpage1.jpg" alt=""></a>
+                                    <a href="blog-details.html"><img th:src="${a.titleimags}" alt=""></a>
                                 </div>
                                 <figcaption class="blog_content">
-                                   <h4 class="post_title"><a href="blog-details.html"><i class="fa fa-paper-plane"></i> Blog image post</a></h4>
+                                   <h4 class="post_title"><a href="blog-details.html"><i class="fa fa-paper-plane"></i> [[${a.title}]]</a></h4>
                                     <div class="blog_meta">
-                                        <p>By <a href="#">admin</a> / Date <a href="#">July 16, 2019</a> / Category: <a href="#">eCommerce</a></p>
+                                        <p>作者: <a href="#">admin</a> / 时间: <a href="#">[[${a.createtime}]]</a> / 分类: <a href="#">eCommerce</a></p>
                                     </div>
-                                    <p class="post_desc">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus praesent ornare.</p>
+                                    <p class="post_desc">[[${a.description}]]</p>
                                     <footer class="btn_more">
-                                        <a href="blog-details.html"> Read more</a>
+                                        <a href="blog-details.html"> 了解更多...</a>
                                     </footer>
                                 </figcaption>
                             </figure>
                         </article>
-                        <article class="single_blog">
-                            <figure>
-                                <div class="blog_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blogpage2.jpg" alt=""></a>
-                                </div>
-                                <figcaption class="blog_content">
-                                   <h4 class="post_title"><a href="blog-details.html"><i class="fa fa-paper-plane"></i>Libero lorem</a></h4>
-                                    <div class="blog_meta">
-                                        <p>By <a href="#">admin</a> / Date <a href="#">July 16, 2019</a> / Category: <a href="#">eCommerce</a></p>
-                                    </div>
-                                    <p class="post_desc">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus praesent ornare.</p>
-                                    <footer class="btn_more">
-                                        <a href="blog-details.html"> Read more</a>
-                                    </footer>
-                                </figcaption>
-                            </figure>
-                        </article>
+
                         <article class="single_blog">
                             <figure>
                                 <div class="blog_thumb blog_thumb_active owl-carousel">
@@ -147,7 +131,7 @@
                                 </figcaption>
                             </figure>
                         </article>
-                        <article class="single_blog">
+                        <article class="single_blog" >
                             <figure>
                                 <div class="blog_thumb">
                                     <a href="blog-details.html"><img src="assets/img/blog/blogpage3.jpg" alt=""></a>
@@ -155,11 +139,11 @@
                                 <figcaption class="blog_content">
                                    <h4 class="post_title"><a href="blog-details.html"><i class="fa fa-paper-plane"></i> Post with Audio</a></h4>
                                     <div class="blog_meta">
-                                        <p>By <a href="#">admin</a> / Date <a href="#">July 16, 2019</a> / Category: <a href="#">eCommerce</a></p>
+                                        <p>作者: <a href="#">admin</a> / 时间: <a href="#">July 16, 2019</a> / 分类: <a href="#">eCommerce</a></p>
                                     </div>
                                     <div class="blog_aduio_icone">
                                         <audio controls>
-                                          <source src="http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3?1" type="audio/mp3">
+                                          <source src="http://win.web.rg01.sycdn.kuwo.cn/6c15205614b8e598ecf68a10c2853d64/5f740a2d/resource/n1/99/57/1233668912.mp3" type="audio/mp3">
                                         </audio>
                                     </div>
                                     <p class="post_desc">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus praesent ornare.</p>
@@ -186,39 +170,23 @@
                                 </figcaption>
                             </figure>
                         </article>
-                        <article class="single_blog">
-                            <figure>
-                                <div class="blog_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blogpage5.jpg" alt=""></a>
-                                </div>
-                                <figcaption class="blog_content">
-                                   <h4 class="post_title"><a href="blog-details.html"><i class="fa fa-paper-plane"></i> Maecenas ultricies</a></h4>
-                                    <div class="blog_meta">
-                                        <p>By <a href="#">admin</a> / Date <a href="#">July 16, 2019</a> / Category: <a href="#">eCommerce</a></p>
-                                    </div>
-                                    <p class="post_desc">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus praesent ornare.</p>
-                                    <footer class="btn_more">
-                                        <a href="blog-details.html"> Read more</a>
-                                    </footer>
-                                </figcaption>
-                            </figure>
-                        </article>
+
                     </div>
                 </div>  
                 <div class="col-lg-3 col-md-12">
                     <div class="blog_sidebar_widget">
                         <div class="widget_list widget_search">
                             <div class="widget_title">
-                                <h3>Search</h3>
+                                <h3>搜索</h3>
                             </div>
                             <form action="#">
                                 <input placeholder="Search..." type="text">
-                                <button type="submit">search</button>
+                                <button type="submit">搜索</button>
                             </form>
                         </div>
                         <div class="widget_list comments">
                            <div class="widget_title">
-                                <h3>Recent Comments</h3>
+                                <h3>最近评论</h3>
                             </div>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
@@ -259,7 +227,7 @@
                         </div>
                         <div class="widget_list widget_post">
                             <div class="widget_title">
-                                <h3>Recent Posts</h3>
+                                <h3>最近帖子</h3>
                             </div>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
@@ -300,20 +268,16 @@
                         </div>
                         <div class="widget_list widget_categories">
                             <div class="widget_title">
-                                <h3>Categories</h3>
+                                <h3>分类</h3>
                             </div>
                             <ul>
-                                <li><a href="#">Audio</a></li>
-                                <li><a href="#">Company</a></li>
-                                <li><a href="#">Gallery</a></li>
-                                <li><a href="#">Image</a></li>
-                                <li><a href="#">Other</a></li>
-                                <li><a href="#">Travel</a></li>
+                                <li th:each="c : ${Category}"><a th:href="'blog-details.html?cid='+${c.id}">[[${c.name}]]</a></li>
+
                             </ul>
                         </div>
                         <div class="widget_list widget_tag">
                             <div class="widget_title">
-                                <h3>Tag products</h3>
+                                <h3>标签</h3>
                             </div>
                             <div class="tag_widget">
                                 <ul>
@@ -337,11 +301,10 @@
                 <div class="col-12">
                     <div class="pagination">
                         <ul>
-                            <li class="current">1</li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="next"><a href="#">next</a></li>
-                            <li><a href="#">>></a></li>
+                            <li th:each="p : ${Articles.navigatepageNums}" th:class="${p==Articles.pageNum ? 'current':''}"><a th:href="${p == Articles.pageNum ?  '#' : 'blog.html?page='+p}">[[${p}]]</a></li>
+
+                            <li class="next" th:if="hasNextPage==true"><a th:href="'blog.html?page='+${Articles.nextPage}">next</a></li>
+                            <li><a th:href="'blog.html?page='+${Articles.navigateLastPage}">>></a></li>
                         </ul>
                     </div>
                 </div>

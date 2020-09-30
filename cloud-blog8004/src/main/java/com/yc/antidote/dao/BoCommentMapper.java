@@ -1,5 +1,7 @@
 package com.yc.antidote.dao;
 
+import com.yc.antidote.bean.BoComment;
+import com.yc.antidote.bean.BoCommentExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

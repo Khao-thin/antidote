@@ -1,5 +1,7 @@
 package com.yc.antidote;
 
+import com.yc.antidote.bean.BoArticle;
+import com.yc.antidote.bean.BoArticleExample;
 import com.yc.antidote.dao.BoArticleMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +21,7 @@ class CloudBlog8004ApplicationTests {
         BoArticleExample bae = new BoArticleExample();
         bae.setOrderByClause("createtime desc");
         List<BoArticle> list = bam.selectByExample(null);
-       System.out.println(list);
+
     }
 
 }

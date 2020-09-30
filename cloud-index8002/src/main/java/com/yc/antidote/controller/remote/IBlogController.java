@@ -1,8 +1,13 @@
 package com.yc.antidote.controller.remote;
 
+
+import com.github.pagehelper.PageInfo;
 import com.yc.antidote.bean.BoArticle;
+import com.yc.antidote.bean.BoCategory;
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -10,6 +15,9 @@ import java.util.List;
 public interface IBlogController {
 
     @RequestMapping("blog/getArticles")
-    List<BoArticle> getArticles();
+    PageInfo<BoArticle> getArticles(@RequestParam(defaultValue = "1") int page);
+
+    @RequestMapping("blog/getCategory")
+    List<BoCategory> getCategory();
 
 }
