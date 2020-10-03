@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -93,7 +93,7 @@
                                 <figcaption class="blog_content">
                                    <h4 class="post_title"><a href="blog-details.html"><i class="fa fa-paper-plane"></i> [[${a.title}]]</a></h4>
                                     <div class="blog_meta">
-                                        <p>作者: <a href="#">admin</a> / 时间: <a href="#">[[${a.createtime}]]</a> / 分类: <a href="#">eCommerce</a></p>
+                                        <p>作者: <a href="#" th:text="${a.author}">admin</a> / 时间: <a href="#" th:text="${#calendars.format(a.createtime,'yyyy-MM-dd HH:mm')}"></a> / 分类: <a href="#" th:text="${a.category.name}">eCommerce</a></p>
                                     </div>
                                     <p class="post_desc">[[${a.description}]]</p>
                                     <footer class="btn_more">

@@ -1,18 +1,20 @@
 package com.yc.antidote.controller;
 
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yc.antidote.bean.BoArticle;
 import com.yc.antidote.bean.BoArticleExample;
 import com.yc.antidote.bean.BoCategory;
+import com.yc.antidote.controller.remote.IUserController;
 import com.yc.antidote.dao.BoArticleMapper;
-
 import com.yc.antidote.dao.BoCategoryMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -25,6 +27,9 @@ public class blogController {
     @Resource
     BoCategoryMapper bcm;
 
+    @Resource
+    IUserController iuc;
+
     /**
      * 文章
      * @return
@@ -34,8 +39,15 @@ public class blogController {
         BoArticleExample bae = new BoArticleExample();
         bae.setOrderByClause("createtime desc");
 
+
+
         PageHelper.startPage(page,10);
-        PageInfo<BoArticle> pageInfo = new PageInfo<BoArticle>( bam.selectByExample(bae));
+        List<BoArticle> list = bam.selectByExample(bae);
+        for(Iterator<BoArticle> it = list.iterator(); it.hasNext();){
+            BoArticle article = it.next();
+            article.setAuthor(iuc.bgetUser(Integer.parseInt(article.getAuthor())).get(0).getName());
+        }
+        PageInfo<BoArticle> pageInfo = new PageInfo<BoArticle>( list);
 
 
         return pageInfo;

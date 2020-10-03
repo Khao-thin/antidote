@@ -1,5 +1,7 @@
 package com.yc.antidote.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class BoArticle {
@@ -21,6 +23,7 @@ public class BoArticle {
 
     private String status;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")
     private Date createtime;
 
     private Integer readcnt;
@@ -28,6 +31,19 @@ public class BoArticle {
     private Integer agreecnt;
 
     private String content;
+
+    /**
+     * 关联分类表
+     */
+    private BoCategory category;
+
+    public BoCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(BoCategory category) {
+        this.category = category;
+    }
 
     public Integer getId() {
         return id;

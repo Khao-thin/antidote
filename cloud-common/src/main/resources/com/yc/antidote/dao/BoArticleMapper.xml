@@ -14,6 +14,7 @@
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="readCnt" jdbcType="INTEGER" property="readcnt" />
     <result column="agreeCnt" jdbcType="INTEGER" property="agreecnt" />
+    <association property="category" column="categoryId" select="com.yc.antidote.dao.BoCategoryMapper.selectByPrimaryKey" ></association>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.yc.antidote.bean.BoArticle">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
