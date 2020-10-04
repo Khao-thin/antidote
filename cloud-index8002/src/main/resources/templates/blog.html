@@ -88,7 +88,7 @@
                         <article class="single_blog" th:each=" a : ${Articles.list}">
                             <figure>
                                 <div class="blog_thumb">
-                                    <a href="blog-details.html"><img th:src="${a.titleimags}" alt=""></a>
+                                    <a th:href="'blog-details.html?id='+${a.id}"><img th:src="${a.titleimags}" alt=""></a>
                                 </div>
                                 <figcaption class="blog_content">
                                    <h4 class="post_title"><a href="blog-details.html"><i class="fa fa-paper-plane"></i> [[${a.title}]]</a></h4>
@@ -97,7 +97,7 @@
                                     </div>
                                     <p class="post_desc">[[${a.description}]]</p>
                                     <footer class="btn_more">
-                                        <a href="blog-details.html"> 了解更多...</a>
+                                        <a th:href="'blog-details.html?id='+${a.id}"> 了解更多...</a>
                                     </footer>
                                 </figcaption>
                             </figure>

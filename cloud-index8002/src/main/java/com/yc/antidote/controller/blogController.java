@@ -35,10 +35,12 @@ public class blogController {
     }
 
     @RequestMapping(path = {"blogDetail","blog-details.html"})
-    public String blogdetails(Model m){
-
+    public String blogdetails(Model m,@RequestParam int id){
+        m.addAttribute("Article",ibc.getArticle(id));
 
         return "blog-details";
     }
+
+
 
 }

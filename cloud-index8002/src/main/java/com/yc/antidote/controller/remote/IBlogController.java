@@ -20,4 +20,7 @@ public interface IBlogController {
     @RequestMapping("blog/getCategory")
     List<BoCategory> getCategory();
 
+    @RequestMapping("blog/getArticle")
+    BoArticle getArticle(@RequestParam int id);
+
 }

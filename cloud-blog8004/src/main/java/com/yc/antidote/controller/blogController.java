@@ -62,4 +62,11 @@ public class blogController {
         return bcm.selectByExample(null);
     }
 
+    @RequestMapping("getArticle")
+    public BoArticle getArticle(@RequestParam int id){
+        BoArticle boArticle = bam.selectByPrimaryKey(id);
+        boArticle.setAuthor(iuc.bgetUser(Integer.parseInt(boArticle.getAuthor())).get(0).getName());
+        return boArticle;
+    }
+
 }
