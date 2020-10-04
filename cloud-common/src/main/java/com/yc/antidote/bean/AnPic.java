@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class AnPic {
+import java.io.Serializable;
+
+public class AnPic implements Serializable {
     private Integer id;
 
     private Integer productId;

@@ -31,7 +31,7 @@ public class blogController {
     @RequestMapping(path = {"blogtest","ooooo"})
     @ResponseBody
     public PageInfo<BoArticle> getq(@RequestParam(defaultValue = "1") int page){
-        return ibc.getArticles(page);
+        return (PageInfo<BoArticle>) ibc.getArticles(page);
     }
 
     @RequestMapping(path = {"blogDetail","blog-details.html"})

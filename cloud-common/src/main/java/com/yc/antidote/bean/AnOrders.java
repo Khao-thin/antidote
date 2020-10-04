@@ -1,8 +1,9 @@
 package com.yc.antidote.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AnOrders {
+public class AnOrders implements Serializable {
     private Integer id;
 
     private Integer uid;

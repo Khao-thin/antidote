@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class AnSize {
+import java.io.Serializable;
+
+public class AnSize implements Serializable {
     private Integer id;
 
     private String size;

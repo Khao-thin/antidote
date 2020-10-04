@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class AnLog {
+import java.io.Serializable;
+
+public class AnLog implements Serializable {
     private Integer id;
 
     private String com;

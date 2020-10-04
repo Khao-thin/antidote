@@ -15,7 +15,7 @@ import java.util.List;
 public interface IBlogController {
 
     @RequestMapping("blog/getArticles")
-    PageInfo<BoArticle> getArticles(@RequestParam(defaultValue = "1") int page);
+    Object getArticles(@RequestParam(defaultValue = "1") int page);
 
     @RequestMapping("blog/getCategory")
     List<BoCategory> getCategory();

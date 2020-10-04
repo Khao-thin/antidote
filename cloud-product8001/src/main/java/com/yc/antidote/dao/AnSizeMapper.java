@@ -1,5 +1,7 @@
 package com.yc.antidote.dao;
 
+import com.yc.antidote.bean.AnSize;
+import com.yc.antidote.bean.AnSizeExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

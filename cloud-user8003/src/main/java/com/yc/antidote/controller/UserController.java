@@ -25,7 +25,7 @@ public class UserController {
         List<AnUser> anUsers = anUserMapper.selectByExample(anUserExample);
         if (anUsers.isEmpty()){
             return new Result<>(0,"用户名或密码错误");
-        }else return new Result<>(1,"登陆成功");
+        }else return new Result<>(1,"登陆成功",anUsers.get(0));
     }
 
     @PostMapping("register")

@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class AnProductsku {
+import java.io.Serializable;
+
+public class AnProductsku implements Serializable {
     private Integer id;
 
     private Integer productId;

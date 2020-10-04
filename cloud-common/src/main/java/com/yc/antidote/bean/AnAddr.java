@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class AnAddr {
+import java.io.Serializable;
+
+public class AnAddr implements Serializable {
     private Integer id;
 
     private Integer uid;

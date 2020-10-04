@@ -1,5 +1,7 @@
 package com.yc.antidote.dao;
 
+import com.yc.antidote.bean.AnCategory;
+import com.yc.antidote.bean.AnCategoryExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

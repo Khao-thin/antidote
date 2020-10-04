@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class AnUser {
+import java.io.Serializable;
+
+public class AnUser implements Serializable {
     private Integer id;
 
     private String account;

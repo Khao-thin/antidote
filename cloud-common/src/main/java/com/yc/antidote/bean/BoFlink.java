@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class BoFlink {
+import java.io.Serializable;
+
+public class BoFlink implements Serializable {
     private Integer id;
 
     private String name;

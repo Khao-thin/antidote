@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class AnOrderitem {
+import java.io.Serializable;
+
+public class AnOrderitem implements Serializable {
     private Integer id;
 
     private Integer count;

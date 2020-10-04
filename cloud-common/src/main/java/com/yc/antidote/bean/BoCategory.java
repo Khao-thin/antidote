@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class BoCategory {
+import java.io.Serializable;
+
+public class BoCategory implements Serializable {
     private Integer id;
 
     private String name;

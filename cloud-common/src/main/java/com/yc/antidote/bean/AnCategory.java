@@ -1,6 +1,8 @@
 package com.yc.antidote.bean;
 
-public class AnCategory {
+import java.io.Serializable;
+
+public class AnCategory implements Serializable {
     private Integer id;
 
     private String name;
