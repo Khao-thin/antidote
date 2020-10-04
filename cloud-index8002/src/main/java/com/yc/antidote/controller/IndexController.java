@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -28,17 +27,18 @@ public class IndexController {
         return "register";
     }
 
-    @GetMapping(path={"logout"})
-    //SessionStatus用于终止会话
-    public String logout(SessionStatus sessionStatus) {
-        sessionStatus.setComplete();
+    @RequestMapping(path={"/","index.html"})
+    public String index(Model m){
+
         return "index";
     }
 
-    @RequestMapping(path={"/","index.html"})
-    public String index(Model m){
-        return "index";
-    }
+
+    @RequestMapping(path={"contact.html","contact"})
+    public String contact() { return "contact"; }
+
+    @RequestMapping(path={"about.html","about"})
+    public String about() { return "about"; }
 
     @PostMapping("login")
     public String login(@Valid AnUser user, Errors errors, Model m) {
@@ -68,3 +68,4 @@ public class IndexController {
         }
     }
 }
+
