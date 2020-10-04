@@ -229,40 +229,13 @@
                             <div class="widget_title">
                                 <h3>最近帖子</h3>
                             </div>
-                            <div class="post_wrapper">
+                            <div class="post_wrapper" th:each="ra : ${RArticles}">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog1.jpg" alt=""></a>
+                                    <a th:href="'blog-details.html?id='+${ra.id}"><img th:src="${ra.titleimags}" alt=""></a>
                                 </div>
                                 <div class="post_info">
-                                    <h4><a href="blog-details.html">Blog image post</a></h4>
-                                    <span>March 16, 2018 </span>
-                                </div>
-                            </div>
-                             <div class="post_wrapper">
-                                <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog2.jpg" alt=""></a>
-                                </div>
-                                <div class="post_info">
-                                    <h4><a href="blog-details.html">Post with Gallery</a></h4>
-                                    <span>March 16, 2018 </span>
-                                </div>
-                            </div>
-                             <div class="post_wrapper">
-                                <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog3.jpg" alt=""></a>
-                                </div>
-                                <div class="post_info">
-                                    <h4><a href="blog-details.html">Post with Audio</a></h4>
-                                    <span>March 16, 2018 </span>
-                                </div>
-                            </div>
-                             <div class="post_wrapper">
-                                <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog4.jpg" alt=""></a>
-                                </div>
-                                <div class="post_info">
-                                    <h4><a href="blog-details.html">Post with Video</a></h4>
-                                    <span>March 16, 2018 </span>
+                                    <h4><a href="blog-details.html">[[${ra.title.substring(0,T(Math).min(13,ra.title.length()))}]]</a></h4>
+                                    <span th:text="${#calendars.format(ra.createtime,'yyyy-MM-dd')}">March 16, 2018 </span>
                                 </div>
                             </div>
                         </div>

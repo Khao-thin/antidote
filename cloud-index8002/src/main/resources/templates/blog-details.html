@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -38,7 +38,8 @@
     
     <!--modernizr min js here-->
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/axios.min.js"></script>
 </head>
 
 <body>
@@ -95,7 +96,7 @@
                                 </div>
                                 <div class="blog_thumb">
                                    <!--<a href="#"><img src="assets/img/blog/blog-big1.jpg" alt=""></a>-->
-                                    <a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601787523268&di=0fd8d09ec144c2d9fefd079bbe76920a&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2%2F585a2d3f397d8.jpg" alt=""></a>
+                                    <a href="#"><img th:src="${Article.titleimags}" alt=""></a>
                                </div>
                                <figcaption class="blog_content">
                                     <div class="post_content" th:utext="${Article.content}">
@@ -177,19 +178,19 @@
                             </div>
                        </div> 
                         <div class="comments_box">
-                            <h3>3 Comments	</h3>
-                            <div class="comment_list">
+                            <h3>{{commlist.length}} 条评论	</h3>
+                            <div class="comment_list" v-for="c in commlist ">
                                 <div class="comment_thumb">
-                                    <img src="assets/img/blog/comment3.png.jpg" alt="">
+                                    <img style="width: 50px;height: 50px;" :src="c.head" alt="">
                                 </div>
                                 <div class="comment_content">
                                     <div class="comment_meta">
-                                        <h5><a href="#">Admin</a></h5>
-                                        <span>October 16, 2018 at 1:38 am</span> 
+                                        <h5><a href="#">{{c.author}}</a></h5>
+                                        <span>{{c.createtime}}</span>
                                     </div>
-                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure</p>
+                                    <p>{{c.content}}</p>
                                     <div class="comment_reply">
-                                        <a href="#">Reply</a>
+                                        <a href="#">回复</a>
                                     </div>
                                 </div>
 
@@ -209,46 +210,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="comment_list">
-                                <div class="comment_thumb">
-                                    <img src="assets/img/blog/comment3.png.jpg" alt="">
-                                </div>
-                                <div class="comment_content">
-                                    <div class="comment_meta">
-                                        <h5><a href="#">Admin</a></h5>
-                                        <span>October 16, 2018 at 1:38 am</span> 
-                                    </div>
-                                    <p>Quisque orci nibh, porta vitae sagittis sit amet, vehicula vel mauris. Aenean at</p>
-                                    <div class="comment_reply">
-                                        <a href="#">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="comments_form">
-                            <h3>Leave a Reply </h3>
-                            <p>Your email address will not be published. Required fields are marked *</p>
+                            <h3>发表评论 </h3>
+                            <p></p>
                             <form action="#">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label for="review_comment">Comment </label>
-                                        <textarea name="comment" id="review_comment" ></textarea>
+                                        <label for="review_comment">请输入你要评论的内容！ </label>
+                                        <textarea name="comment" id="review_comment" v-model="content"></textarea>
                                     </div> 
-                                    <div class="col-lg-4 col-md-4">
-                                        <label for="author">Name</label>
-                                        <input id="author"  type="text">
 
-                                    </div> 
-                                    <div class="col-lg-4 col-md-4">
-                                        <label for="email">Email </label>
-                                        <input id="email"  type="text">
-                                    </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <label for="website">Website </label>
-                                        <input id="website"  type="text">
-                                    </div>   
                                 </div>
-                                <button class="button" type="submit">Post Comment</button>
+                                <button class="button" type="button" @click="commit()">提交</button>
                              </form>    
                         </div>
                          
@@ -379,7 +354,36 @@
         </div>
     </div>
     <!--blog section area end-->
+     <script type="text/javascript">
+         var vue  = new Vue({
+             el:".blog_wrapper",
+             data:{
+                 content:"",
+                 articleid: [[${Article.id}]],
+                 commlist:[]
+             },created(){
+                 axios.get("commShow?aid="+this.articleid).then(res=>{
+                     this.commlist = res.data.data;
+                     console.info(this.commlist);
+                 });
+             },methods:{
+                 commit(){
+                     var params = new URLSearchParams();
+                     params.append("content",this.content);
+                     params.append("articleid",this.articleid);
+                     axios.post("comment",params).then(res=>{
+                         alert(res.data.msg);
+                         if(res.data.status==1){
+                             this.commlist.push(res.data.data);
+                             this.content = '';
+                         }
+                     });
+                 }
+             }
+         });
 
+
+     </script>
      <!--footer area start-->
      <footer >
          <div th:replace="shop::#footer">

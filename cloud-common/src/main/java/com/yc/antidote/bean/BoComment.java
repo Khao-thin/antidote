@@ -1,5 +1,7 @@
 package com.yc.antidote.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,7 +14,29 @@ public class BoComment implements Serializable {
 
     private Integer createby;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")
     private Date createtime;
+
+    //姓名
+    private String author;
+    //头像
+    private String head;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getHead() {
+        return head;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
 
     public Integer getId() {
         return id;
